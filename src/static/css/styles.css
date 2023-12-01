@@ -1,39 +1,43 @@
 body {
-    background-color: #f4f4f4;
+    background-color: #f9f9f9; 
     margin-top: 50px;
-    font-family: 'Lato';
+    font-family: 'Lato', sans-serif;
 }
 
 .item {
-    background-color: white;
-    padding: 15px;
-    margin-bottom: 15px;
-    border: transparent;
-    border-radius: 5px;
-    box-shadow: 0 0 1em #ccc;
-    transition: all .2s ease-in-out;
+    background-color: #fff; 
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd; 
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); 
+    transition: all .3s ease-in-out;
 }
 
 .item:hover {
-    box-shadow: 0 0 1em #aaa;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
 }
 
 .item.completed {
     text-decoration: line-through;
+    opacity: 0.7; 
 }
 
 .toggles {
-    color: black;
+    color: #333; 
 }
 
 .name {
-    padding-top: 3px;
+    padding-top: 8px; 
+    color: #555; 
 }
 
 .remove {
-    padding-left: 0;
+    padding-left: 5px; 
 }
 
 button:focus {
-    border: 1px solid #333;
+    outline: none; 
+    border: 2px solid #555; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
