@@ -51,7 +51,7 @@ function TodoListCard() {
 
     return (
         <React.Fragment>
-            <AddItemForm onNewItem={onNewItem} />
+            <AddItemForm />
             {items.length === 0 && (
                 <p className="text-center">No items yet! Add one above!</p>
             )}
@@ -67,30 +67,13 @@ function TodoListCard() {
     );
 }
 
-function AddItemForm({ onNewItem }) {
-    const { Form, InputGroup, Button } = ReactBootstrap;
+function AddItemForm() {
+    const { Form, InputGroup } = ReactBootstrap;
 
     const [newItem, setNewItem] = React.useState('');
-    const [submitting, setSubmitting] = React.useState(false);
-
-    const submitNewItem = e => {
-        e.preventDefault();
-        setSubmitting(true);
-        fetch('/items', {
-            method: 'POST',
-            body: JSON.stringify({ name: newItem }),
-            headers: { 'Content-Type': 'application/json' },
-        })
-            .then(r => r.json())
-            .then(item => {
-                onNewItem(item);
-                setSubmitting(false);
-                setNewItem('');
-            });
-    };
 
     return (
-        <Form onSubmit={submitNewItem}>
+        <Form>
             <InputGroup className="mb-3">
                 <Form.Control
                     value={newItem}
@@ -98,16 +81,9 @@ function AddItemForm({ onNewItem }) {
                     type="text"
                     placeholder="New Item"
                     aria-describedby="basic-addon1"
+                    readOnly // Set the readOnly attribute
                 />
-                <InputGroup.Append>
-                    <Button
-                        type="submit"
-                        variant="primary"
-                        disabled={!newItem} // Disable the button if newItem is empty
-                    >
-                        Add Item
-                    </Button>
-                </InputGroup.Append>
+                {/* No need for the Button component */}
             </InputGroup>
         </Form>
     );
@@ -149,6 +125,7 @@ function ItemDisplay({ item, onItemUpdate, onItemRemoval }) {
                                 ? 'Mark item as incomplete'
                                 : 'Mark item as complete'
                         }
+                        disabled // Disable the button
                     >
                         <i
                             className={`far ${
@@ -166,6 +143,7 @@ function ItemDisplay({ item, onItemUpdate, onItemRemoval }) {
                         variant="link"
                         onClick={removeItem}
                         aria-label="Remove Item"
+                        disabled // Disable the button
                     >
                         <i className="fa fa-trash text-danger" />
                     </Button>
