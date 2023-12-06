@@ -99,7 +99,14 @@ function AddItemForm({ onNewItem }) {
                     placeholder="New Item"
                     aria-describedby="basic-addon1"
                 />
-                <InputGroup.Append>   
+                <InputGroup.Append>
+                    <Button
+                        type="submit"
+                        variant="primary"
+                        disabled={!newItem} // Disable the button if newItem is empty
+                    >
+                        Add Item
+                    </Button>
                 </InputGroup.Append>
             </InputGroup>
         </Form>
